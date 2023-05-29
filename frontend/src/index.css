@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   height: 50px;
+   padding: 2em;
+   position: relative;
+   /* position: absolute; */
+   top: 0;
+   width: 100%;
+   margin-inline: auto;
+   /* max-width: 1920px; */
+   color: #ffffff;
+   z-index: 5;
+   background: linear-gradient(90deg, #01b2c9af 0%, #0077a6b0 100%);
+}
+.navbar__logo {
+   font-size: 1.6rem;
+}
+.navbar__items-wrapper {
+   display: flex;
+   align-items: center;
+   list-style: none;
+   padding-left: 0;
+}
+.navbar__items-wrapper button {
+   background-color: transparent;
+   border: none;
+   outline: none;
+}
+.navbar__btn:hover {
+   cursor: pointer;
+}
+#navbar-check {
+   display: none;
+}
+.navbar__btn {
+   cursor: pointer;
+   position: relative;
+   border: none;
+   background: none;
+   margin-inline: 1em;
+   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+   transition-duration: 400ms;
+   transition-property: color;
+   z-index: 9;
+}
+.navbar__btn:focus:after,
+.navbar__btn:hover:after {
+   width: 100%;
+   left: 0;
+}
+.navbar__btn:after {
+   content: '';
+   pointer-events: none;
+   bottom: -2px;
+   left: 50%;
+   position: absolute;
+   width: 0;
+   height: 1px;
+   background-color: #ffffff;
+   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+   transition-duration: 400ms;
+   transition-property: width, left;
+}
+.hide {
+   height: 0px !important;
+}
+.show {
+   height: 30vh !important;
+}
+
+@media (max-width: 650px) {
+   .navbar__items-wrapper li {
+      margin-block: 0.8em;
+   }
+   .navbar__btn-wrapper label {
+      display: flex;
+      flex-direction: column;
+   }
+   .navbar__btn-wrapper label:hover {
+      cursor: pointer;
+   }
+   .navbar__btn-wrapper span {
+      display: block;
+      width: 25px;
+      height: 8px;
+      border-top: 3px solid #eee;
+   }
+   .navbar__items-wrapper {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 100%;
+      background-color: #0b79a0;
+      height: 0;
+      transition: all 0.3s ease-in;
+      overflow: hidden;
+      z-index: 5;
+   }
+}
