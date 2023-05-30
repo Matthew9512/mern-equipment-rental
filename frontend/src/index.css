@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+   .toolCat {
+      @apply w-32 h-32 rounded-lg bg-red-400 flex flex-wrap justify-center items-center text-center p-2;
+   }
+}
+
 .navbar {
    display: flex;
    align-items: center;

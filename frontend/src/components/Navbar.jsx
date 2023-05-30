@@ -39,17 +39,17 @@ export const Navbar = () => {
          <ul className={`navbar__items-wrapper ${navbarVis ? 'show' : 'hide'}`}>
             <li>
                <a href='/'>
-                  <button className='navbar__btn'>Start</button>
+                  <button className='navbar__btn'>Oferta</button>
                </a>
             </li>
             <li>
                <a href='#contact'>
-                  <button className='navbar__btn'>Contact</button>
+                  <button className='navbar__btn'>Kontakt</button>
                </a>
             </li>
             <li>
                <a href='#contact'>
-                  <button className='navbar__btn'>About</button>
+                  <button className='navbar__btn'>O nas</button>
                </a>
             </li>
             <li>
