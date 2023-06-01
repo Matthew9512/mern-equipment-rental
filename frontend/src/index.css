@@ -2,10 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+   html {
+      @apply scroll-smooth;
+   }
+}
 @layer utilities {
    .toolCat {
       @apply w-32 h-32 rounded-lg bg-red-400 flex flex-wrap justify-center items-center text-center p-2;
    }
+   .section {
+      @apply flex gap-6 flex-wrap justify-center py-8;
+   }
+   /* .toolWrapper {
+      @apply h-96 w-80 rounded-lg overflow-hidden;
+   }
+   .toolImg {
+      @apply w-full h-full object-cover hover:scale-110 duration-500;
+   } */
+}
+
+.react-calendar {
+   background-color: #0b79a0;
+   color: black;
+}
+.react-calendar__tile--active {
+   color: black;
+   background-color: black;
 }
 
 .navbar {

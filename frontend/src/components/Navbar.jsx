@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { logoIcon, userIcon } from '../utils/icons';
+import { logoIcon, shopIcon } from '../utils/icons';
 
 export const Navbar = () => {
    const navBtn = useRef();
@@ -38,7 +38,7 @@ export const Navbar = () => {
          </div>
          <ul className={`navbar__items-wrapper ${navbarVis ? 'show' : 'hide'}`}>
             <li>
-               <a href='/'>
+               <a href='#oferta'>
                   <button className='navbar__btn'>Oferta</button>
                </a>
             </li>
@@ -53,42 +53,12 @@ export const Navbar = () => {
                </a>
             </li>
             <li>
-               <a href='#contact'>
-                  <button className='navbar__btn'>{userIcon}</button>
-               </a>
+               <label htmlFor='my-drawer-4' className='drawer-button'>
+                  {shopIcon}
+               </label>
+               {/* <button className='navbar__btn'>{shopIcon}</button> */}
             </li>
          </ul>
       </nav>
    );
-   //    return (
-   //       <nav ref={navRef} onClick={toggleNavbar} className='flex items-center justify-between h-12 p-8 w-full relative bg-teal-400 text-red'>
-   //          {logoIcon}
-   //          <input type='checkbox' className='hidden' id='navbar-check' />
-   //          <div className=''>
-   //             <label ref={navBtn} className='flex flex-col hover:cursor-pointer' htmlFor='navbar-check'>
-   //                <span className='block w-8 h-4 '></span>
-   //                <span className='block w-8 h-4 '></span>
-   //                <span className='block w-8 h-4 '></span>
-   //             </label>
-   //          </div>
-   //          <ul className={`flex gap-8 items-center pl-0 list-none left-0 top-12 ${navbarVis ? '' : 'hidden'}`}>
-   //             <li>
-   //                <a href='/'>
-   //                   <button className='navbar__btn'>Start</button>
-   //                </a>
-   //             </li>
-   //             <li>
-   //                <a href='#contact'>
-   //                   <button className='navbar__btn'>Contact</button>
-   //                </a>
-   //             </li>
-   //             <li>
-   //                <a href='#contact'>
-   //                   <button className='navbar__btn'>About</button>
-   //                </a>
-   //             </li>
-   //             <li>{userIcon}</li>
-   //          </ul>
-   //       </nav>
-   //    );
 };

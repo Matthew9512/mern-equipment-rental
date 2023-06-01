@@ -7,12 +7,13 @@ import { Layout } from './components/Layout';
 
 export const App = () => {
    return (
-      <main className='container mx-auto min-h-screen'>
+      // <main className='container mx-auto min-h-screen'>
+      <main className='max-w-screen-2xl mx-auto min-h-screen'>
          <BrowserRouter>
             <Routes>
                <Route element={<Layout />}>
                   <Route path='/' element={<Home />}></Route>
-                  <Route path='/wynajem' element={<Rental />}></Route>
+                  <Route path='/wynajem/:id' element={<Rental />}></Route>
                </Route>
                <Route path='/server' element={<ServerDown />}></Route>
                <Route path='/*' element={<Error />}></Route>

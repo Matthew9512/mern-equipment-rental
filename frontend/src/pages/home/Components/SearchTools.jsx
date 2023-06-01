@@ -39,7 +39,7 @@ export const SearchTools = () => {
                </svg>
             </button>
          </div>
-         <SearchedListTools showDropdown={showDropdown} />
+         <SearchedListTools showDropdown={showDropdown} setShowDropdown={setShowDropdown} />
       </article>
    );
 };
