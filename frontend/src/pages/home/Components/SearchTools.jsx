@@ -5,16 +5,15 @@ import { SearchedListTools } from './SearchedListTools';
 export const SearchTools = () => {
    const [showDropdown, setShowDropdown] = useState(false);
    const searchTool = (e) => {
-      // hide drop list if length is less than 2
-      if (e.target.value.length < 2) return setShowDropdown(false);
-
-      console.log(`searchTool`);
+      // hide drop list if length is less than 3
+      if (e.target.value.length < 3) return setShowDropdown(false);
       setShowDropdown(true);
    };
 
    const debouncedSearchTools = useMemo(() => debounce(searchTool, 1000), []);
+
    return (
-      <article className='form-control w-4/5 mx-auto py-8 relative'>
+      <article className='form-control w-4/5 mx-auto py-16 relative'>
          <div className='input-group'>
             <input
                onChange={debouncedSearchTools}

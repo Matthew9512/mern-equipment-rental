@@ -21,7 +21,7 @@ export const SearchedListTools = ({ showDropdown, setShowDropdown }) => {
          ref={dropRef}
          className={`${
             !showDropdown ? 'hidden' : ''
-         } rounded-xl max-h-96 overflow-y-scroll overflow-hidden z-50 bg-red-400 absolute top-[70%]`}
+         } rounded-xl max-h-96 overflow-y-scroll overflow-hidden z-50 absolute top-[70%] bg-slate-400 `}
       >
          <p className='mb-4 p-4 hover:bg-red-200'>
             Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto!

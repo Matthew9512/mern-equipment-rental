@@ -1,19 +1,25 @@
 const nodemailer = require('nodemailer');
 
-const sendNotifications = async (req, res, next) => {
+const reserveTools = async (req, res, next) => {
+   console.log(`email`);
+   return;
    try {
-      const { tool, id, date } = req.body;
+      console.log(req.body);
+      const { username, surname, toolName, price, startDate, endDate } = req.body;
 
-      if (!tool || !id || !date) return res.status(400).json({ message: `No data provided` });
+      if (!toolName) return res.status(400).json({ message: `No data provided` });
 
       const html = `
-    <h1>one more test xd</h1>
-    <p>${tool}</p>
-    <p>${id}</p>
-    <p>${date}</p>
+    <h1>nowy klient</h1>
+    <p>imie: ${username}</p>
+    <p>nazwisko: ${surname}</p>
+    <p>nazwa narzedzia: ${toolName}</p>
+    <p>cena: ${price}</p>
+    <p>wynajecie: ${startDate}</p>
+    <p>zwrot: ${endDate}</p>
     `;
 
-      const send = await mailSettings(html);
+      const send = await sendNotifications(html);
       console.log(send);
    } catch (error) {
       console.log(error.message);
@@ -21,7 +27,7 @@ const sendNotifications = async (req, res, next) => {
    }
 };
 
-const mailSettings = async (html) => {
+const sendNotifications = async (html) => {
    // email account from where mails are send
    const transporter = nodemailer.createTransport({
       service: 'gmail',

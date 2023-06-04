@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom';
-import { bookmarkIcon } from '../../../utils/icons';
 /**
- * category list from DB
+ * @todo category list from DB
+ * @todo after click on cat name fetch list of tools and display on list below with new header based on cat
  */
 
 export const ToolsAssortment = () => {
-   const bookTool = (e) => {
-      console.log(e.target);
-      // const click = e.target;
-      // const parent = click.closest('.card');
+   const fetchByCat = async (e) => {
+      const click = e.target.textContent;
+      document.querySelector('#toolsList').scrollIntoView();
+
+      console.log(click);
    };
 
    return (
-      <section className='px-16 bg-teal-400' id='oferta'>
-         <p>Szukaj wedlug kategori:</p>
-         <article className='section'>
+      <section className='px-16' id='oferta'>
+         <p className='sectionTitle'>Szukaj wedlug kategori:</p>
+         <article onClick={fetchByCat} className='section' id=''>
             <div className='toolCat'>elektronarzedzia</div>
             <div className='toolCat'>zageszczarki</div>
             <div className='toolCat'>akcesoria do betonu</div>
@@ -23,28 +24,26 @@ export const ToolsAssortment = () => {
             <div className='toolCat'>nagrzewnice</div>
             <div className='toolCat'>osuszacze</div>
          </article>
-         {/*  */}
-         <p>Najczesciej wypozyczane:</p>
+         <p className='pt-8 sectionTitle' id='toolsList'>
+            Najczesciej wypozyczane:
+         </p>
          <article className='section'>
-            <div to={'/wynajem/1'} className='card group w-[20rem] h-[26rem] bg-base-100 shadow-xl'>
+            <div className='card group w-[20rem] h-[26rem] bg-base-100 hover:shadow-xl'>
                <figure>
                   <img src='../../../../radio' className='object-cover group-hover:scale-110 duration-300' alt='' />
                </figure>
                <div className='card-body p-4'>
-                  <h2 className='card-title'>nazwa</h2>
+                  <h2 className='card-title'>radio</h2>
                   <p>cena: 100/doba</p>
                   <p>wynajmij</p>
-                  <div className='card-actions justify-between items-center'>
-                     <p onClick={bookTool} className='cursor-pointer '>
-                        {bookmarkIcon}
-                     </p>
-                     <Link to={'/wynajem/1'} className='btn btn-primary'>
+                  <div className='card-actions justify-end mt-4'>
+                     <Link to={'/wynajem/radio/1'} className='btn'>
                         wypozycz
                      </Link>
                   </div>
                </div>
             </div>
-            <div to={'/wynajem/2'} className='card group w-[20rem] h-[26rem] bg-base-100 shadow-xl'>
+            <div className='card group w-[20rem] h-[26rem] bg-base-100 hover:shadow-xl'>
                <figure>
                   <img
                      src='../../../../wiertarka.jpg'
@@ -53,32 +52,26 @@ export const ToolsAssortment = () => {
                   />
                </figure>
                <div className='card-body p-4'>
-                  <h2 className='card-title'>nazwa</h2>
+                  <h2 className='card-title'>wiertarka</h2>
                   <p>cena: 100/doba</p>
                   <p>wynajmij</p>
-                  <div className='card-actions justify-between items-center'>
-                     <p onClick={bookTool} className='cursor-pointer '>
-                        {bookmarkIcon}
-                     </p>
-                     <Link to={'/wynajem/2'} className='btn btn-primary'>
+                  <div className='card-actions justify-end mt-4'>
+                     <Link to={'/wynajem/wiertarka.jpg/2'} className='btn'>
                         wypozycz
                      </Link>
                   </div>
                </div>
             </div>
-            <div to={'/wynajem/3'} className='card group w-[20rem] h-[26rem] bg-base-100 shadow-xl'>
+            <div className='card group w-[20rem] h-[26rem] bg-base-100 hover:shadow-xl'>
                <figure>
                   <img src='../../../../wkretarka' className='object-cover group-hover:scale-110 duration-300' alt='' />
                </figure>
                <div className='card-body p-4'>
-                  <h2 className='card-title'>nazwa</h2>
+                  <h2 className='card-title'>wkretarka</h2>
                   <p>cena: 100/doba</p>
                   <p>wynajmij</p>
-                  <div className='card-actions justify-between items-center'>
-                     <p onClick={bookTool} className='cursor-pointer '>
-                        {bookmarkIcon}
-                     </p>
-                     <Link to={'/wynajem/3'} className='btn btn-primary'>
+                  <div className='card-actions justify-end mt-4'>
+                     <Link to={'/wynajem/wkretarka/3'} className='btn'>
                         wypozycz
                      </Link>
                   </div>

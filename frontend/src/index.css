@@ -6,29 +6,119 @@
    html {
       @apply scroll-smooth;
    }
+   ::-webkit-scrollbar {
+      @apply w-2;
+   }
+   ::-webkit-scrollbar-thumb {
+      @apply bg-slate-400 rounded-lg;
+   }
+   ::-webkit-scrollbar-track {
+      @apply bg-transparent;
+   }
 }
 @layer utilities {
    .toolCat {
       @apply w-32 h-32 rounded-lg bg-red-400 flex flex-wrap justify-center items-center text-center p-2;
    }
    .section {
-      @apply flex gap-6 flex-wrap justify-center py-8;
+      @apply flex gap-6 border-b flex-wrap justify-center py-16;
    }
-   /* .toolWrapper {
-      @apply h-96 w-80 rounded-lg overflow-hidden;
+   .btn {
+      @apply bg-[#077096] text-white border-[#077096];
    }
-   .toolImg {
-      @apply w-full h-full object-cover hover:scale-110 duration-500;
-   } */
+   .btn-disabled {
+      @apply bg-slate-200 border-slate-200;
+   }
+   .btn:hover {
+      @apply bg-[#0a83ae] border-[#0a83ae];
+   }
+   .sectionTitle {
+      @apply font-bold text-lg tracking-wide uppercase;
+   }
+   .animate {
+      animation: message 2s linear forwards;
+   }
 }
 
+@keyframes message {
+   0% {
+      height: 0;
+      opacity: 0;
+   }
+   5% {
+      height: 3em;
+      opacity: 1;
+   }
+   90% {
+      height: 3em;
+      opacity: 1;
+   }
+   95% {
+      height: 1.5em;
+      opacity: 0.5;
+   }
+   100% {
+      height: 0;
+      opacity: 0;
+   }
+}
+
+.react-daterange-picker__wrapper {
+   border: 1px solid #bfbfbf;
+   border-radius: 0.4rem;
+   margin-inline: auto;
+   padding: 0.5em;
+   width: 350px;
+}
 .react-calendar {
-   background-color: #0b79a0;
-   color: black;
+   font-family: inherit;
+   background-color: #f8f8f8;
+   color: #1c1c1c;
+   border-radius: 0.6em;
+   position: absolute;
+   top: 3em;
+   overflow: hidden;
+}
+@media screen and (min-width: 1024px) {
+   .react-calendar {
+      top: 0;
+   }
+}
+
+.react-calendar abbr {
+   text-decoration: none;
+}
+.react-daterange-picker__inputGroup input {
+   border: none;
+   outline: none;
+}
+.react-daterange-picker__inputGroup input::selection {
+   background-color: transparent;
 }
 .react-calendar__tile--active {
    color: black;
-   background-color: black;
+   background-color: #84c2ff;
+}
+.react-calendar__tile--active:hover {
+   color: black;
+   background-color: #ffbb848e;
+}
+.react-daterange-picker__range-divider {
+   margin-inline: 1rem;
+}
+.react-calendar__month-view__days__day--weekend {
+   color: #1c1c1c;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+   opacity: 0.4;
+}
+.react-calendar__viewContainer {
+   padding-top: 0.5em;
+   border-top: 1px solid #d6d6d6;
+}
+.react-calendar__tile--hasActive {
+   border: 1px solid #5359f4 !important;
+   border-radius: 0.4em;
 }
 
 .navbar {

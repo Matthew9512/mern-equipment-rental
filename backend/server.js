@@ -16,7 +16,7 @@ app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 
 // sending mail => done
-// app.post('/notification', require('./controllers/sendNotification'));
+app.post('/reserve-tools', require('./controllers/reserveTools'));
 
 app.use(errorHandler);
 
