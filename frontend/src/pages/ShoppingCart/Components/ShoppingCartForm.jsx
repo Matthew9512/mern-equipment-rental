@@ -5,7 +5,7 @@ import { LoadingButton } from '../../../components/LoadingButton';
 import { closeIcon } from '../../../utils/icons';
 
 /**
- * @todo kaucja
+ * @todo kaucja?
  * @todo error
  */
 
@@ -29,9 +29,9 @@ export const ShoppingCartForm = () => {
          email: emailRef.current.value,
          number: numberRef.current.value,
          toolName: rentalItems.at(0).toolName,
-         price: rentalItems.at(0).price,
-         startDate: rentalItems.at(0).startDate,
-         endDate: rentalItems.at(0).endDate,
+         price: rentalItems.at(0).cena,
+         wynajem: rentalItems.at(0).wynajem,
+         zwrot: rentalItems.at(0).zwrot,
       };
 
       await fetchData({

@@ -1,13 +1,22 @@
 import { useMemo, useState } from 'react';
 import debounce from 'lodash.debounce';
-import { SearchedListTools } from './SearchedListTools';
+import { DropdownToolsList } from './DropdownToolsList';
+import { useAxios } from '../../../hooks/useAxios';
+import { searchIcon } from '../../../utils/icons';
 
 export const SearchTools = () => {
    const [showDropdown, setShowDropdown] = useState(false);
-   const searchTool = (e) => {
+   const { fetchData, data, loading, error } = useAxios();
+
+   // search products by name
+   const searchTool = async (e) => {
       // hide drop list if length is less than 3
       if (e.target.value.length < 3) return setShowDropdown(false);
       setShowDropdown(true);
+      await fetchData({
+         method: 'GET',
+         url: `/szukaj/q?nazwaProduktu=${e.target.value}`,
+      });
    };
 
    const debouncedSearchTools = useMemo(() => debounce(searchTool, 1000), []);
@@ -21,24 +30,15 @@ export const SearchTools = () => {
                placeholder='Znajdz narzedzia'
                className='input focus:outline-none w-full'
             />
-            <button className='btn btn-square disabled'>
-               <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 w-6'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-               >
-                  <path
-                     strokeLinecap='round'
-                     strokeLinejoin='round'
-                     strokeWidth='2'
-                     d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-                  />
-               </svg>
-            </button>
+            <div className='btn btn-square disabled'>{searchIcon}</div>
          </div>
-         <SearchedListTools showDropdown={showDropdown} setShowDropdown={setShowDropdown} />
+         <DropdownToolsList
+            data={data}
+            error={error}
+            loading={loading}
+            showDropdown={showDropdown}
+            setShowDropdown={setShowDropdown}
+         />
       </article>
    );
 };

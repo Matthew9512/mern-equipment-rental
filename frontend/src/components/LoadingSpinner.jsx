@@ -1,4 +1,4 @@
-export const LoadingSpinner = () => {
+export const LoadingSpinner = ({ loading }) => {
    // loading
    return (
       <div

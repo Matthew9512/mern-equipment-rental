@@ -13,6 +13,7 @@ export const useAxios = () => {
    const navigate = useNavigate();
 
    const fetchData = async (options) => {
+      setError(false);
       try {
          setLoading(true);
          const res = await axios.request(options);
@@ -21,8 +22,10 @@ export const useAxios = () => {
          console.log(res.data);
       } catch (error) {
          console.log(error);
-         if (error.request.status === 0) return navigate('/server-down');
          setError(error.response.data.message);
+         if (error.request.status === 0) return navigate('/server-down');
+      } finally {
+         setLoading(false);
       }
    };
 
