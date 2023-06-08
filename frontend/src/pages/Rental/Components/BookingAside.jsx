@@ -17,7 +17,7 @@ export const BookingAside = ({ data }) => {
 
    return (
       <>
-         <div className='lg:w-2/5 w-full flex flex-col gap-4 mx-auto items-center'>
+         <div className='lg:w-2/5 w-full flex flex-col gap-4 lg:py-4 mx-auto items-center'>
             <p>{data?.cena}zl / dobra</p>
             <p>{data?.kaucja}zl kaucji</p>
             <DateRangePicker
@@ -43,7 +43,7 @@ export const BookingAside = ({ data }) => {
                      },
                   ])
                }
-               className={`btn btn-accent`}
+               className={`btn btn-accent mt-6`}
             >
                dodaj do koszyka
             </button>

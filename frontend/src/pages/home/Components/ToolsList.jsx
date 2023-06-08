@@ -9,7 +9,7 @@ export const ToolsList = ({ data, loading, error }) => {
          <p className='pt-8 sectionTitle' id='toolsList'>
             {data.at(0)?.kategoriaProduktu}
          </p>
-         <article className='section relative'>
+         <article className='section justify-center relative'>
             {loading ? (
                <LoadingSpinner loading={loading} />
             ) : error ? (
@@ -22,7 +22,7 @@ export const ToolsList = ({ data, loading, error }) => {
                            <img
                               src={`${value?.zdjecia}`}
                               className='object-cover group-hover:scale-110 duration-300'
-                              alt=''
+                              alt='zdjecie produktu'
                            />
                         </figure>
                         <div className='card-body p-4'>

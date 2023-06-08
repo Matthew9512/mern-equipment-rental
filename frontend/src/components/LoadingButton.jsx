@@ -1,6 +1,6 @@
-export const LoadingButton = () => {
+export const LoadingButton = ({ className }) => {
    return (
-      <button className='btn'>
+      <button className={`btn ${className}`}>
          <span className='loading loading-spinner'></span>
          loading
       </button>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { logoIcon, shopIcon } from '../utils/icons';
 import { rentalItemsContext } from '../context/rentalItemsContext';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 /**
  * @todo about us
@@ -60,10 +60,14 @@ export const Navbar = () => {
                   <button className='navbar__btn'>O nas</button>
                </a>
             </li>
-            <li className='indicator hover:cursor-pointer' onClick={() => window.my_modal_1.showModal()}>
+            <Link
+               to={'/koszyk'}
+               className='indicator hover:cursor-pointer'
+               onClick={() => window.my_modal_1.showModal()}
+            >
                {shopIcon}
                <span className='indicator-item rounded-full h-6 w-6 badge'>{rentalItems.length}</span>
-            </li>
+            </Link>
          </ul>
       </nav>
    );

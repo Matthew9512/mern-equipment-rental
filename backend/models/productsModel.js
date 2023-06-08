@@ -7,7 +7,11 @@ const ProductsSchema = new Schema(
       kategoriaProduktu: String,
       cena: Number,
       kaucja: Number,
-      ilosc: Number,
+      rodzaj: Boolean,
+      ilosc: {
+         type: Number,
+         default: 1,
+      },
       dostepneOd: Date,
       zdjecia: String,
    },

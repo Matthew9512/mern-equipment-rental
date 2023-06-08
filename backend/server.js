@@ -5,6 +5,10 @@ const compression = require('compression');
 const errorHandler = require('./middleware/errorHandler');
 const connectDB = require('./config/connectDB');
 
+/**
+ * @todo cors optios
+ */
+
 const PORT = 8000;
 const app = express();
 
@@ -18,8 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 
 connectDB();
 
-// sending mail => done
-// app.post('/reserve-tools', require('./controllers/reserveTools'));
 app.use('/szukaj', require('./routes/productsRouter'));
 
 app.use('/wynajem', require('./routes/rentRouter'));

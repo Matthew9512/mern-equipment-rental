@@ -18,10 +18,11 @@
 }
 @layer utilities {
    .toolCat {
-      @apply w-32 h-32 rounded-lg bg-red-400 flex flex-wrap justify-center items-center text-center p-2;
+      @apply w-32 h-32 rounded-full bg-yellow-400 flex flex-wrap justify-center items-center text-center;
    }
    .section {
-      @apply flex gap-6 border-b flex-wrap justify-center py-16;
+      /* justify-center */
+      @apply flex gap-6 border-b flex-wrap py-16;
    }
    .btn {
       @apply bg-[#077096] text-white border-[#077096];
@@ -32,34 +33,35 @@
    .btn:hover {
       @apply bg-[#0a83ae] border-[#0a83ae];
    }
+   .inputForm {
+      @apply input border-[#077096] outline-none w-full placeholder:italic placeholder:opacity-60;
+   }
+   .inputForm:focus {
+      @apply outline-none;
+   }
    .sectionTitle {
       @apply font-bold text-lg tracking-wide uppercase;
    }
-   .animate {
-      animation: message 2s linear forwards;
+   .animate-fadeIn {
+      animation: fadeIn 3s linear;
+   }
+   .error {
+      @apply bg-red-600 text-red-100;
+   }
+   .success {
+      @apply bg-green-700 text-green-100;
    }
 }
 
-@keyframes message {
-   0% {
-      height: 0;
-      opacity: 0;
-   }
+@keyframes fadeIn {
    5% {
-      height: 3em;
       opacity: 1;
-   }
-   90% {
-      height: 3em;
-      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
    }
    95% {
-      height: 1.5em;
-      opacity: 0.5;
-   }
-   100% {
-      height: 0;
-      opacity: 0;
+      opacity: 1;
+      transform: translateY(0);
    }
 }
 

@@ -20,7 +20,7 @@ export const Rental = () => {
    }, []);
 
    return (
-      <section className='flex flex-col lg:flex-row pt-8 lg:p-20 gap-16'>
+      <section className='flex flex-col lg:flex-row lg:p-20 '>
          {loading ? (
             <LoadingSpinner loading={loading} />
          ) : error ? (
