@@ -25,7 +25,8 @@
       @apply flex gap-6 border-b flex-wrap py-16;
    }
    .btn {
-      @apply bg-[#077096] text-white border-[#077096];
+      @apply bg-yellow-400 text-white border-yellow-400;
+      /* @apply bg-[#077096] text-white border-[#077096]; */
    }
    .btn-disabled {
       @apply bg-slate-200 border-slate-200;
@@ -40,7 +41,7 @@
       @apply outline-none;
    }
    .sectionTitle {
-      @apply font-bold text-lg tracking-wide uppercase;
+      @apply font-bold text-lg tracking-wide uppercase text-center;
    }
    .animate-fadeIn {
       animation: fadeIn 3s linear;
@@ -64,7 +65,6 @@
       transform: translateY(0);
    }
 }
-
 .react-daterange-picker__wrapper {
    border: 1px solid #bfbfbf;
    border-radius: 0.4rem;
@@ -137,7 +137,8 @@
    /* max-width: 1920px; */
    color: #ffffff;
    z-index: 5;
-   background: linear-gradient(90deg, #01b2c9af 0%, #0077a6b0 100%);
+   /* background: linear-gradient(90deg, #01b2c9af 0%, #0077a6b0 100%); */
+   background: linear-gradient(90deg, #f8d54b 0%, #ffcc00 100%);
 }
 .navbar__logo {
    font-size: 1.6rem;

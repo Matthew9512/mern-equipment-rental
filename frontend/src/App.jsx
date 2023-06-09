@@ -8,7 +8,6 @@ import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
 
 export const App = () => {
    return (
-      // <main className='container mx-auto min-h-screen'>
       <main className='max-w-screen-2xl mx-auto min-h-screen text-gray-800 bg-neutral-50'>
          <BrowserRouter>
             <Routes>

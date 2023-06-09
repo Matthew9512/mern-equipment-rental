@@ -16,16 +16,36 @@ const getProductDetails = async (req, res) => {
    }
 };
 
+const checkAvailability = async (req, res, next) => {
+   try {
+      const { id } = req.params;
+
+      const findProducts = await productsModel.findById(id);
+
+      const amount = findProducts.ilosc;
+      if (amount === 0)
+         return res.status(404).json({
+            message: `Produkt chwilowo niedostepny, przewidywana dostawa: ${findProducts.dostepnyOd}`,
+            amount,
+         });
+
+      res.status(200).json({ message: `Aktualnie posiadamy ${amount} sztuk`, amount });
+   } catch (error) {
+      console.log(error.message);
+      next(error);
+   }
+};
+
 const reserveTools = async (req, res, next) => {
    try {
-      const { id, ilosc } = req.body;
+      const { id, ilosc, zwrot } = req.body;
 
       if (!id) return res.status(404).json({ message: `No data provided` });
       // zdjecia
 
       const findProducts = await productsModel.findOneAndUpdate(
          { _id: id, ilosc: { $gte: +ilosc } },
-         { $inc: { ilosc: -+ilosc } }
+         { $inc: { ilosc: -+ilosc }, dostepnyOd: zwrot }
       );
 
       if (!findProducts) return res.status(404).json({ message: `Nie mozna zarezerwowac podanej ilosci narzedzi` });
@@ -94,4 +114,4 @@ const sendNotifications = async (html, email, res, next) => {
    }
 };
 
-module.exports = { getProductDetails, reserveTools };
+module.exports = { getProductDetails, reserveTools, checkAvailability };

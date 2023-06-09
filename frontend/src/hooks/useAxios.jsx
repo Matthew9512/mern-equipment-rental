@@ -22,8 +22,8 @@ export const useAxios = () => {
          console.log(res.data);
       } catch (error) {
          console.log(error);
-         setError(error.response.data.message);
          if (error.request.status === 0) return navigate('/server-down');
+         setError(error.response.data.message);
       } finally {
          setLoading(false);
       }

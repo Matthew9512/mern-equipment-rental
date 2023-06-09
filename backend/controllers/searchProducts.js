@@ -1,6 +1,9 @@
 const productsModel = require('../models/productsModel');
 
+// message if there is no products
 const _noProductsMsg = `Wyglada na to ze nie posiadamy jeszcze szukanego produktu`;
+// mongoose .select query
+const _select = `nazwaProduktu cena kaucja zdjecia ilosc`;
 
 const searchByName = async (req, res, next) => {
    try {
@@ -9,7 +12,7 @@ const searchByName = async (req, res, next) => {
 
       const findProducts = await productsModel
          .find({ nazwaProduktu: productRegex })
-         .select('kategoriaProduktu nazwaProduktu cena kaucja zdjecia');
+         .select(`${_select} kategoriaProduktu`);
 
       if (!findProducts.length) return res.status(404).json({ message: _noProductsMsg });
 
@@ -23,9 +26,7 @@ const searchByName = async (req, res, next) => {
 const searchByCategory = async (req, res, next) => {
    try {
       const kategoriaProduktu = req.params.kategoriaProduktu;
-      const findProducts = await productsModel
-         .find({ kategoriaProduktu })
-         .select('kategoriaProduktu nazwaProduktu cena kaucja zdjecia');
+      const findProducts = await productsModel.find({ kategoriaProduktu }).select(`${_select} kategoriaProduktu`);
 
       if (!findProducts.length) return res.status(404).json({ message: _noProductsMsg });
       res.status(200).json(findProducts);
@@ -37,9 +38,7 @@ const searchByCategory = async (req, res, next) => {
 
 const featuresProducts = async (req, res, next) => {
    try {
-      const findProducts = await productsModel
-         .find({ rodzaj: true })
-         .select('kategoriaProduktu nazwaProduktu cena kaucja zdjecia rodzaj');
+      const findProducts = await productsModel.find({ rodzaj: true }).select(`${_select} rodzaj`);
 
       if (!findProducts.length) return res.status(404).json({ message: _noProductsMsg });
 

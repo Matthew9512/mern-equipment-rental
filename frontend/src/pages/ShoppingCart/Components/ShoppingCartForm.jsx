@@ -6,7 +6,6 @@ import { PopupMessage } from '../../../components/PopupMessage';
 /**
  * @todo kaucja?
  * @todo error
- * @todo ilosc
  */
 
 export const ShoppingCartForm = ({ rentalItems }) => {
@@ -14,7 +13,6 @@ export const ShoppingCartForm = ({ rentalItems }) => {
    const surnameRef = useRef();
    const emailRef = useRef();
    const numberRef = useRef();
-   const amountRef = useRef();
    const [disabledBtn, setDisabledBtn] = useState(false);
    const { fetchData, data, loading, error } = useAxios();
 
@@ -28,7 +26,7 @@ export const ShoppingCartForm = ({ rentalItems }) => {
          nazwisko: surnameRef.current.value,
          email: emailRef.current.value,
          numer: numberRef.current.value,
-         ilosc: amountRef.current.value,
+         ilosc: rentalItems.at(0).ilosc,
          wynajem: rentalItems.at(0).wynajem,
          zwrot: rentalItems.at(0).zwrot,
       };
@@ -72,10 +70,6 @@ export const ShoppingCartForm = ({ rentalItems }) => {
             <span className='label-text'>Numer:</span>
          </label>
          <input ref={numberRef} type='number' placeholder='+48' className='inputForm' />
-         <label className='label'>
-            <span className='label-text'>Ilosc produktu :</span>
-         </label>
-         <input ref={amountRef} type='number' placeholder='Np: 1' className='inputForm' />
          <div className='mt-6 text-center'>
             {loading ? (
                <LoadingButton className={`w-full`} />

@@ -5,13 +5,13 @@ import { LoadingSpinner } from '../../../components/LoadingSpinner';
 export const DropdownToolsList = ({ data, error, loading, showDropdown, setShowDropdown }) => {
    const dropRef = useRef();
 
-   console.log(data);
    // toggle drop menu vis when user clicks outside of drop menu when menu is vis
    useEffect(() => {
       if (!showDropdown) return;
 
       const handleOusideClick = (e) => {
-         if (!dropRef.current.contains(e.target)) setShowDropdown(false);
+         if (!e.target.classList.contains('input')) setShowDropdown(false);
+         // if (!dropRef.current.contains(e.target)) setShowDropdown(false);
       };
 
       document.addEventListener('click', handleOusideClick);
@@ -19,14 +19,14 @@ export const DropdownToolsList = ({ data, error, loading, showDropdown, setShowD
       return () => document.removeEventListener('click', handleOusideClick);
    }, [showDropdown]);
 
-   if (!data) return '';
+   if (!data && !error) return '';
 
    return (
       <article
          ref={dropRef}
          className={`${
             !showDropdown ? 'hidden' : ''
-         } flex flex-wrap items-center justify-center rounded-xl w-full max-h-96 min-h-[12rem] p-4 overflow-y-scroll overflow-hidden z-50 absolute top-[70%] bg-slate-400 `}
+         } flex flex-wrap items-center justify-center rounded-xl shadow-xl w-full max-h-96 min-h-[12rem] p-4 overflow-y-scroll overflow-hidden z-50 absolute top-[70%] bg-slate-100 `}
       >
          {loading ? (
             <LoadingSpinner loading={loading} />

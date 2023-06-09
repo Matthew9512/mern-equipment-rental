@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { LoadingSpinner } from '../../../components/LoadingSpinner';
+import { Overlay } from '../../../components/Overlay';
 
 export const ToolsList = ({ data, loading, error }) => {
    if (!data) return <p>{error}</p>;
@@ -7,9 +8,9 @@ export const ToolsList = ({ data, loading, error }) => {
    return (
       <>
          <p className='pt-8 sectionTitle' id='toolsList'>
-            {data.at(0)?.kategoriaProduktu}
+            {data.at(0)?.kategoriaProduktu || 'Wyroznione produkty'}
          </p>
-         <article className='section justify-center relative'>
+         <article className='section justify-center relative min-h-[25em]'>
             {loading ? (
                <LoadingSpinner loading={loading} />
             ) : error ? (
@@ -17,7 +18,11 @@ export const ToolsList = ({ data, loading, error }) => {
             ) : (
                data.map((value) => {
                   return (
-                     <div key={value?._id} className='card group w-[20rem] h-[26rem] bg-base-100 hover:shadow-xl'>
+                     <div
+                        key={value?._id}
+                        className='card group w-[20rem] h-[28rem] bg-base-100 overflow-hidden hover:shadow-xl'
+                     >
+                        {!value?.ilosc ? <Overlay /> : ''}
                         <figure>
                            <img
                               src={`${value?.zdjecia}`}
@@ -30,8 +35,14 @@ export const ToolsList = ({ data, loading, error }) => {
                            <p>cena: {value?.cena}/doba</p>
                            <p>kaucja: {value?.kaucja}</p>
                            <p>wynajmij</p>
-                           <div className='card-actions justify-end mt-4'>
-                              <Link to={`/wynajem/${value?.nazwaProduktu}/${value._id}`} className='btn'>
+                           <div className='card-actions justify-end mt-8'>
+                              <Link
+                                 to={`/wynajem/${value?.nazwaProduktu
+                                    .toString()
+                                    .replaceAll(' ', '-')
+                                    .replaceAll('/', '-')}/${value._id}`}
+                                 className='btn'
+                              >
                                  wypozycz
                               </Link>
                            </div>

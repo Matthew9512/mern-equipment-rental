@@ -1,4 +1,5 @@
 import { deleteIcon } from '../../../utils/icons';
+import { CheckAvailability } from '../../Rental/Components/CheckAvailability';
 
 export const ShoppingCartList = ({ rentalItems, setRentalItems }) => {
    const removeItem = (e) => {
@@ -27,16 +28,18 @@ export const ShoppingCartList = ({ rentalItems, setRentalItems }) => {
                         <p>nazwa: {value?.nazwaProduktu}</p>
                         <p>wynajem: {value?.wynajem}</p>
                         <p>zwrot: {value?.zwrot}</p>
+                        <p>ilosc: {value?.ilosc}</p>
                      </div>
+                     <CheckAvailability id={value.id} />
                   </div>
                   <div onClick={removeItem}>{deleteIcon}</div>
                </div>
             );
          })}
-         <p className=''>
+         <p>
             <span className='font-bold'>Laczna kwota: </span>
             {rentalItems.reduce((acc, value) => {
-               return acc + value.cena;
+               return acc + value.cena * value.ilosc;
             }, 0)}
             zl
          </p>

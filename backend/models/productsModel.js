@@ -12,7 +12,7 @@ const ProductsSchema = new Schema(
          type: Number,
          default: 1,
       },
-      dostepneOd: Date,
+      dostepnyOd: String,
       zdjecia: String,
    },
    {
