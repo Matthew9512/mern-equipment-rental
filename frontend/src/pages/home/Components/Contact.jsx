@@ -4,7 +4,6 @@ import 'leaflet/dist/leaflet.css';
 export const Contact = () => {
    return (
       <article className='section justify-center flex-col px-16 lg:flex-row lg:gap-24' id='contact'>
-         {/* <article className='flex flex-col justify-center py-8 px-16 gap-8 lg:flex-row lg:gap-24' id='contact'> */}
          <div className='flex flex-col gap-3 justify-center items-center lg:items-start'>
             <p>Marcel Kubiak</p>
             <p>Kwietniki 31, 59-411 Paszowice</p>

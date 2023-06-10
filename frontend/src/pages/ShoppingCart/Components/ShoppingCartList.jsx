@@ -8,7 +8,6 @@ export const ShoppingCartList = ({ rentalItems, setRentalItems }) => {
       setRentalItems(filterLS);
    };
 
-   console.log(rentalItems);
    return (
       <div className='w-full'>
          <p className='font-bold uppercase py-4 text-center tracking-wider'>Moj koszyk</p>

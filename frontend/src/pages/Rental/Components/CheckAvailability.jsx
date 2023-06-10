@@ -1,15 +1,19 @@
-import { PopupMessage } from '../../../components/PopupMessage';
+import { useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { useAxios } from '../../../hooks/useAxios';
 
 export const CheckAvailability = ({ id }) => {
-   const { fetchData, data, error } = useAxios();
+   const { fetchData, data } = useAxios();
+
+   useEffect(() => {
+      if (!data) return;
+      if (data?.amount === 0) toast.error(data?.message);
+      else toast.success(data?.message);
+   }, [data]);
 
    return (
-      <>
-         {<PopupMessage message={data?.message || error} type={data?.amount === 0 ? false : true} />}
-         <p onClick={() => fetchData({ method: 'GET', url: `/wynajem/dostepnosc/${id}` })} className='underline'>
-            Sprawdz dostepnosc
-         </p>
-      </>
+      <p onClick={() => fetchData({ method: 'GET', url: `/wynajem/dostepnosc/${id}` })} className='underline h-max'>
+         Sprawdz dostepnosc
+      </p>
    );
 };

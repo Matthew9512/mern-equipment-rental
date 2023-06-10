@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { LoadingSpinner } from '../../../components/LoadingSpinner';
-import { Overlay } from '../../../components/Overlay';
 
 export const ToolsList = ({ data, loading, error }) => {
    if (!data) return <p>{error}</p>;
@@ -22,7 +21,6 @@ export const ToolsList = ({ data, loading, error }) => {
                         key={value?._id}
                         className='card group w-[20rem] h-[28rem] bg-base-100 overflow-hidden hover:shadow-xl'
                      >
-                        {!value?.ilosc ? <Overlay /> : ''}
                         <figure>
                            <img
                               src={`${value?.zdjecia}`}
@@ -34,7 +32,6 @@ export const ToolsList = ({ data, loading, error }) => {
                            <h2 className='card-title'>{value?.nazwaProduktu}</h2>
                            <p>cena: {value?.cena}/doba</p>
                            <p>kaucja: {value?.kaucja}</p>
-                           <p>wynajmij</p>
                            <div className='card-actions justify-end mt-8'>
                               <Link
                                  to={`/wynajem/${value?.nazwaProduktu

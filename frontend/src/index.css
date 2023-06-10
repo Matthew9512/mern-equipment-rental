@@ -43,18 +43,18 @@
    .sectionTitle {
       @apply font-bold text-lg tracking-wide uppercase text-center;
    }
-   .animate-fadeIn {
+   /* .animate-fadeIn {
       animation: fadeIn 3s linear;
-   }
-   .error {
+   } */
+   /* .error {
       @apply bg-red-600 text-red-100;
    }
    .success {
       @apply bg-green-700 text-green-100;
-   }
+   } */
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
    5% {
       opacity: 1;
       visibility: visible;
@@ -64,7 +64,7 @@
       opacity: 1;
       transform: translateY(0);
    }
-}
+} */
 .react-daterange-picker__wrapper {
    border: 1px solid #bfbfbf;
    border-radius: 0.4rem;

@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useAxios } from '../../../hooks/useAxios';
 import { LoadingButton } from '../../../components/LoadingButton';
-import { PopupMessage } from '../../../components/PopupMessage';
 
 /**
  * @todo kaucja?
@@ -18,23 +18,30 @@ export const ShoppingCartForm = ({ rentalItems }) => {
 
    const reserveTool = async (e) => {
       e.preventDefault();
-      console.log(`reserved`);
 
-      const formData = {
-         id: rentalItems.at(0).id,
+      const clientData = {
          imie: usernameRef.current.value,
          nazwisko: surnameRef.current.value,
          email: emailRef.current.value,
          numer: numberRef.current.value,
-         ilosc: rentalItems.at(0).ilosc,
-         wynajem: rentalItems.at(0).wynajem,
-         zwrot: rentalItems.at(0).zwrot,
       };
+
+      const productData = [...rentalItems];
+      // const formData = {
+      //    id: rentalItems.at(0).id,
+      //    imie: usernameRef.current.value,
+      //    nazwisko: surnameRef.current.value,
+      //    email: emailRef.current.value,
+      //    numer: numberRef.current.value,
+      //    ilosc: rentalItems.at(0).ilosc,
+      //    wynajem: rentalItems.at(0).wynajem,
+      //    zwrot: rentalItems.at(0).zwrot,
+      // };
 
       await fetchData({
          method: 'POST',
          url: '/wynajem/rezerwacja',
-         data: formData,
+         data: [productData, clientData],
       });
    };
 
@@ -51,9 +58,14 @@ export const ShoppingCartForm = ({ rentalItems }) => {
       else return setDisabledBtn(false);
    };
 
+   useEffect(() => {
+      if (!data && !error) return;
+      if (error) toast.error(error);
+      else toast.success(data?.message);
+   }, [data, error]);
+
    return (
       <div onChange={checkFormValidation} className='w-full'>
-         {<PopupMessage message={data?.message || error} type={data?.message ? true : false} />}
          <label className='label'>
             <span className='label-text'>Imie:</span>
          </label>
