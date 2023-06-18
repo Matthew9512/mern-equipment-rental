@@ -4,15 +4,11 @@ import { useAxios } from '../../../hooks/useAxios';
 import { LoadingButton } from '../../../components/LoadingButton';
 
 /**
- * @todo kaucja?
  * @todo error
  */
 
 export const ShoppingCartForm = ({ rentalItems }) => {
-   const usernameRef = useRef();
-   const surnameRef = useRef();
-   const emailRef = useRef();
-   const numberRef = useRef();
+   const formRef = useRef();
    const [disabledBtn, setDisabledBtn] = useState(false);
    const { fetchData, data, loading, error } = useAxios();
 
@@ -20,23 +16,13 @@ export const ShoppingCartForm = ({ rentalItems }) => {
       e.preventDefault();
 
       const clientData = {
-         imie: usernameRef.current.value,
-         nazwisko: surnameRef.current.value,
-         email: emailRef.current.value,
-         numer: numberRef.current.value,
+         imie: formRef.current.name.value,
+         nazwisko: formRef.current.surname.value,
+         email: formRef.current.email.value,
+         numer: formRef.current.number.value,
       };
 
       const productData = [...rentalItems];
-      // const formData = {
-      //    id: rentalItems.at(0).id,
-      //    imie: usernameRef.current.value,
-      //    nazwisko: surnameRef.current.value,
-      //    email: emailRef.current.value,
-      //    numer: numberRef.current.value,
-      //    ilosc: rentalItems.at(0).ilosc,
-      //    wynajem: rentalItems.at(0).wynajem,
-      //    zwrot: rentalItems.at(0).zwrot,
-      // };
 
       await fetchData({
          method: 'POST',
@@ -48,11 +34,11 @@ export const ShoppingCartForm = ({ rentalItems }) => {
    // toggle disabled state of btn
    const checkFormValidation = () => {
       if (!rentalItems.length) return setDisabledBtn(false);
-      if (!emailRef.current.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) return setDisabledBtn(false);
+      if (!formRef.current.email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) return setDisabledBtn(false);
       if (
-         usernameRef.current.value.length >= 3 &&
-         surnameRef.current.value.length >= 3 &&
-         numberRef.current.value.length >= 9
+         formRef.current.name.value.length >= 3 &&
+         formRef.current.surname.value.length >= 3 &&
+         formRef.current.number.value.length >= 9
       )
          return setDisabledBtn(true);
       else return setDisabledBtn(false);
@@ -65,23 +51,15 @@ export const ShoppingCartForm = ({ rentalItems }) => {
    }, [data, error]);
 
    return (
-      <div onChange={checkFormValidation} className='w-full'>
-         <label className='label'>
-            <span className='label-text'>Imie:</span>
-         </label>
-         <input ref={usernameRef} type='text' placeholder='Np: Marek' className='inputForm input-error' />
-         <label className='label'>
-            <span className='label-text'>Nazwisko:</span>
-         </label>
-         <input ref={surnameRef} type='text' placeholder='Np: Kowalski' className='inputForm' />
-         <label className='label'>
-            <span className='label-text'>Email:</span>
-         </label>
-         <input ref={emailRef} type='email' placeholder='Np: marek@gmail.com' className='inputForm' />
-         <label className='label'>
-            <span className='label-text'>Numer:</span>
-         </label>
-         <input ref={numberRef} type='number' placeholder='+48' className='inputForm' />
+      <form ref={formRef} onChange={checkFormValidation} className='w-full'>
+         <label className='label'>Imie:</label>
+         <input name='name' type='text' placeholder='Np: Marek' className='inputForm input-error' />
+         <label className='label'>Nazwisko:</label>
+         <input name='surname' type='text' placeholder='Np: Kowalski' className='inputForm' />
+         <label className='label'>Email:</label>
+         <input name='email' type='email' placeholder='Np: marek@gmail.com' className='inputForm' />
+         <label className='label'>Numer:</label>
+         <input name='number' type='number' placeholder='+48' className='inputForm' />
          <div className='mt-6 text-center'>
             {loading ? (
                <LoadingButton className={`w-full`} />
@@ -91,6 +69,6 @@ export const ShoppingCartForm = ({ rentalItems }) => {
                </button>
             )}
          </div>
-      </div>
+      </form>
    );
 };

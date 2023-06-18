@@ -6,6 +6,7 @@ const emailOptions = (reservedProductsArr, client) => {
          (value) =>
             `<p>nazwa narzedzia: ${value.product?.nazwaProduktu}</p>
                <p>cena: ${value.product?.cena}</p>
+               <p>kaucja: ${value.product?.kaucja}</p>
                <p>ilosc: ${value?.ilosc}</p>
                <p>wynajecie: ${value?.wynajem}</p>
                <p>zwrot: ${value?.zwrot}</p>`

@@ -1,18 +1,17 @@
 require('dotenv').config();
 const cors = require('cors');
+const corsOptions = require('./config/corsOptions');
 const compression = require('compression');
 const express = require('express');
 const errorHandler = require('./middleware/errorHandler');
 const connectDB = require('./config/connectDB');
 
-/**
- * @todo cors optios
- */
-
 const PORT = 8000;
 const app = express();
 
 app.use(cors());
+
+// app.use(cors(corsOptions))
 
 app.use(express.json());
 
@@ -36,25 +35,23 @@ app.listen(PORT, () => {
 // const productsModel = require('./models/productsModel');
 // productsModel.insertMany([
 //    {
-//       kategoriaProduktu: 'zageszczarki',
-//       nazwaProduktu: 'zagęszczarka rewersyjna 143 KG WEBER CR 2 HD',
+//       kategoriaProduktu: 'narzedzia ogrodnicze',
+//       nazwaProduktu: 'glebogryzarka CEDRUS GL03 PRO-LC',
 //       cena: 500,
 //       kaucja: 200,
 //       ilosc: 1,
-//       // dostepneOd: Date,
-//       opis: 'Zagęszczarka rewersyjna Weber CR 2 Hd sprawdzi się przy zagęszczaniu piasku, żwiru, asfaltu czy kostki brukowej.',
+//       opis: 'Glebogryzarka CEDRUS GL03PRO-LC to wszechstronna i uniwersalna glebogryzarka z niezależnym napędem na koła. Przeznaczona do pracy w ogrodach, tunelach foliowych, szklarniach oraz gospodarstwach rolniczych uprawiających rośliny rzędowo. Noże obracają się w obie strony. Obroty do przodu służą do spulchniania wierzchniej warstwy gleby, obroty do tyłu ułatwiają głębokie spulchnianie.',
 //       zdjecia:
 //          'https://images.pexels.com/photos/2117937/pexels-photo-2117937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 //       daneTechniczne: {
-//          'typ silnika': 'spalinowy (benzyna)',
-//          'producent i model silnika': 'Honda GX 160',
-//          paliwo: 'benzyna',
-//          moc: '3,6 kW / 4,9 KM',
-//          częstotliwość: '100 Hz',
-//          'siła odśrodkowa': '25 kN',
-//          rozwuch: 'ręczny',
+//          'moc znamionowa': '6,5 km',
+//          paliwo: 'benzyna bezołowiowa 95 Pb',
+//          'bieg przód/tył': '1/1',
+//          'max głębokość robocza': '170 mm',
 //          'szerokość robocza': '45 cm',
-//          ciężar: '143 kg',
+//          wysokość: '1,1m',
+//          długość: '1,8m',
+//          ciężar: '92 kg',
 //       },
 //    },
 // ]);

@@ -21,7 +21,7 @@ export const ToolsList = ({ data, loading, error }) => {
                         key={value?._id}
                         className='card group w-[20rem] h-[28rem] bg-base-100 overflow-hidden hover:shadow-xl'
                      >
-                        <figure>
+                        <figure className='max-h-52 overflow-hidden'>
                            <img
                               src={`${value?.zdjecia}`}
                               className='object-cover group-hover:scale-110 duration-300'
@@ -30,7 +30,7 @@ export const ToolsList = ({ data, loading, error }) => {
                         </figure>
                         <div className='card-body p-4'>
                            <h2 className='card-title'>{value?.nazwaProduktu}</h2>
-                           <p>cena: {value?.cena}/doba</p>
+                           <p>cena: {value?.cena === 0 ? `Zapytaj o cene` : `${value?.cena}zl brutto/doba`}</p>
                            <p>kaucja: {value?.kaucja}</p>
                            <div className='card-actions justify-end mt-8'>
                               <Link

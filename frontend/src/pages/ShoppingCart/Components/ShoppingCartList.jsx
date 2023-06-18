@@ -22,7 +22,7 @@ export const ShoppingCartList = ({ rentalItems, setRentalItems }) => {
                   <div className='flex gap-12'>
                      <img src={`${value?.zdjecia}`} alt='zdjecie produktu' className='w-24 h-24 rounded-md' />
                      <div>
-                        <p>cena: {value?.cena}</p>
+                        <p>cena: {value?.cena === 0 ? `Zadzwoń aby ustalic cene` : `${value?.cena}zl brutto/doba`}</p>
                         <p>kaucja: {value?.kaucja}</p>
                         <p>nazwa: {value?.nazwaProduktu}</p>
                         <p>wynajem: {value?.wynajem}</p>
@@ -35,8 +35,8 @@ export const ShoppingCartList = ({ rentalItems, setRentalItems }) => {
                </div>
             );
          })}
-         <p>
-            <span className='font-bold'>Laczna kwota: </span>
+         <p className='font-bold text-lg'>
+            <span>Laczna kwota: </span>
             {rentalItems.reduce((acc, value) => {
                return acc + value.cena * value.ilosc;
             }, 0)}

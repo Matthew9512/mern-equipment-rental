@@ -1,7 +1,7 @@
 export const LoadingSpinner = ({ loading }) => {
    return (
       <div
-         className={`absolute top-0 bottom-0 left-0 right-0 bg-slate-800 z-10 flex justify-center items-center ${
+         className={`absolute top-0 bottom-0 left-0 right-0 bg-slate-600 z-10 flex justify-center items-center ${
             loading ? '' : 'hidden'
          } `}
       >

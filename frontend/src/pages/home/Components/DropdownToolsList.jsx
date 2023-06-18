@@ -39,12 +39,12 @@ export const DropdownToolsList = ({ data, error, loading, showDropdown, setShowD
                      to={`/wynajem/${value?.nazwaProduktu}/${value?._id}`}
                      key={value._id}
                      // wartosc width to specific
-                     className='flex w-1/2 h-40 p-4'
+                     className='flex w-[500px] h-40 p-2 lg:p-4'
                   >
-                     <img className='mr-6' src={`${value.zdjecia}`} alt={`${value?.nazwaProduktu}`} />
-                     <div className='flex flex-col justify-center'>
+                     <img className='mr-4 w-1/2 rounded-md' src={`${value.zdjecia}`} alt={`${value?.nazwaProduktu}`} />
+                     <div className='flex flex-col justify-center w-1/2'>
                         <p>{value?.nazwaProduktu}</p>
-                        <p>{value?.cena}</p>
+                        <p>cena: {value?.cena === 0 ? `Zadzwoń aby ustalic cene` : `${value?.cena}zl brutto/doba`}</p>
                         <p>{value?.kaucja}</p>
                      </div>
                   </Link>

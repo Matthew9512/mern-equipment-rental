@@ -32,7 +32,8 @@
       @apply bg-slate-200 border-slate-200;
    }
    .btn:hover {
-      @apply bg-[#0a83ae] border-[#0a83ae];
+      @apply bg-yellow-500 border-yellow-400;
+      /* @apply bg-[#0a83ae] border-[#0a83ae]; */
    }
    .inputForm {
       @apply input border-[#077096] outline-none w-full placeholder:italic placeholder:opacity-60;
@@ -43,28 +44,7 @@
    .sectionTitle {
       @apply font-bold text-lg tracking-wide uppercase text-center;
    }
-   /* .animate-fadeIn {
-      animation: fadeIn 3s linear;
-   } */
-   /* .error {
-      @apply bg-red-600 text-red-100;
-   }
-   .success {
-      @apply bg-green-700 text-green-100;
-   } */
 }
-
-/* @keyframes fadeIn {
-   5% {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-   }
-   95% {
-      opacity: 1;
-      transform: translateY(0);
-   }
-} */
 .react-daterange-picker__wrapper {
    border: 1px solid #bfbfbf;
    border-radius: 0.4rem;
@@ -221,7 +201,7 @@
       top: 48px;
       left: 0;
       width: 100%;
-      background-color: #0b79a0;
+      background: linear-gradient(90deg, #f8d54b 0%, #ffcc00 100%);
       height: 0;
       transition: all 0.3s ease-in;
       overflow: hidden;

@@ -6,6 +6,7 @@ import { Error } from './pages/Error';
 import { ServerDown } from './pages/ServerDown';
 import { Layout } from './components/Layout';
 import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
+import { Statute } from './pages/Statute';
 import { checkIcon, closeIcon } from './utils/icons';
 
 export const App = () => {
@@ -37,6 +38,7 @@ export const App = () => {
                   <Route path='/' element={<Home />}></Route>
                   <Route path='/wynajem/:nazwaProduktu/:id' element={<Rental />}></Route>
                   <Route path='/koszyk' element={<ShoppingCart />}></Route>
+                  <Route path='/regulamin' element={<Statute />}></Route>
                </Route>
                <Route path='/server-down' element={<ServerDown />}></Route>
                <Route path='/*' element={<Error />}></Route>

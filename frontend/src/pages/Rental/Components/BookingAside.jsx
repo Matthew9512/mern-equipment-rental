@@ -37,7 +37,7 @@ export const BookingAside = ({ data, id }) => {
 
    return (
       <div className='lg:w-2/5 w-full flex flex-col gap-4 lg:py-4 mx-auto items-center'>
-         <p>{data?.cena}zl / dobra</p>
+         <p>cena: {data?.cena === 0 ? `Zadzwoń aby ustalic cene` : `${data?.cena}zl brutto/doba`}</p>
          <p>{data?.kaucja}zl kaucji</p>
          <CheckAvailability id={id} />
          <label className='label'>
